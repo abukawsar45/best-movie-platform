@@ -1,5 +1,5 @@
 // use local storage to manage cart data
-const addToCart = (id, quantity) => {
+const addToCart = (id,quantity) => {
   let orderCart = getCartData();
   const ticketQuantity = orderCart[id];
   // console.log(ticketQuantity);
@@ -10,16 +10,8 @@ const addToCart = (id, quantity) => {
     orderCart[id] = newQuantity;
   }
   localStorage.setItem('order-cart', JSON.stringify(orderCart));
-};
+}
 
-// remove data from the LocalStorage
-const removeFromCart = (id) => {
-  const orderCart = getCartData();
-  if (id in orderCart) {
-    delete orderCart[id];
-    localStorage.setItem('order-cart', JSON.stringify(orderCart));
-  }
-};
 
 // get data from LocalStorage
 const getCartData = () => {
@@ -33,9 +25,4 @@ const getCartData = () => {
   return orderCart;
 };
 
-// clear the LocalStorage
-const deleteOrderCart = () => {
-  localStorage.removeItem('order-cart');
-};
-
-export { addToCart, removeFromCart, getCartData, deleteOrderCart };
+export { addToCart, getCartData };

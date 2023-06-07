@@ -6,15 +6,15 @@ const MoviesCart = () => {
 
   useEffect(() => {
     fetch ('https://api.tvmaze.com/search/shows?q=all').then(res=>res.json()).then(data=>{
-      console.log(data)
+      // console.log(data)
       setMoviesData(data)
     })
   },[])
   return (
     <div>
       <div className='row'>
-        {moviesData.map((movie) => (
-          <Cart key={movie.show.genres.id} movie={movie} />
+        { moviesData.map((movie) => (
+          <Cart key={movie?.score} movie={movie} />
         ))}
       </div>
     </div>

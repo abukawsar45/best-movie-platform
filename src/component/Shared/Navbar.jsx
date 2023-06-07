@@ -1,38 +1,33 @@
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
-import { getCartData } from '../../utilities/localStorage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useEffect, useState } from 'react';
 import { BiMoviePlay } from 'react-icons/bi';
-
+import { getCartData } from '../../utilities/localStorage';
 
 const Navbar = () => {
-const [totalTicket, setTotalTicket] = useState(0);
-const [totalMovie, setTotalMovie] = useState(0);
+  const [totalTicket, setTotalTicket] = useState(0);
+  const [totalMovie, setTotalMovie] = useState(0);
 
-  const getData = getCartData();
-  const totalMovieResult = Object.keys(getData).length;
-// console.log(totalMovie,'------')
-  const values = Object.values(getData);  
-  // console.log(values,)
+  useEffect(() => {
+    const getData = getCartData()
+    const totalMovieResult = Object.keys(getData).length;
+    const values = Object.values(getData);
 
-useEffect(() => {
-  const calculateTotalTicket = async () => {
-    const result = await values.reduce(
-      (total, quantity) => total + parseFloat(quantity),
-      0
-    );
-    setTotalTicket(result);
-    setTotalMovie(totalMovieResult);
-    console.log(result, '0099');
-  };
+    const calculateTotalTicket = async () => {
+      const result = await values.reduce(
+        (total, quantity) => total + parseFloat(quantity),
+        0
+      );
+      setTotalTicket(result);
+      setTotalMovie(totalMovieResult);
+    };
 
-  calculateTotalTicket();
-}, [getData, totalMovie,values, totalMovieResult, totalTicket]);
+    calculateTotalTicket();
+  }, []);
 
-console.log({totalTicket});
+  // console.log(totalTicket);
 
-  
   return (
     <div>
       <nav className='navbar navbar-expand-lg bg-light'>
@@ -93,38 +88,3 @@ console.log({totalTicket});
 };
 
 export default Navbar;
-
-// <div>
-//   <nav className='navbar navbar-expand-lg bg-light'>
-//     <div className='container-fluid'>
-//       <Link className='navbar-brand fs-2 font-monospace te' href='#'>
-//         Best Movie Platform
-//       </Link>
-//       <button
-//         className='navbar-toggler'
-//         type='button'
-//         data-bs-toggle='collapse'
-//         data-bs-target='#navbarNavAltMarkup'
-//         aria-controls='navbarNavAltMarkup'
-//         aria-expanded='false'
-//         aria-label='Toggle navigation'
-//       >
-//         <span className='navbar-toggler-icon'></span>
-//       </button>
-//       <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
-//         <div className='navbar-nav'>
-//           <a className='nav-link active' aria-current='page' href='#'>
-//             Home
-//           </a>
-//           <a className='nav-link' href='#'>
-//             Features
-//           </a>
-//           <a className='nav-link' href='#'>
-//             Pricing
-//           </a>
-//           <a className='nav-link disabled'>Disabled</a>
-//         </div>
-//       </div>
-//     </div>
-//   </nav>
-// </div>

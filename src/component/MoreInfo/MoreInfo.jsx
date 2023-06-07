@@ -8,8 +8,8 @@ import '@smastrom/react-rating/style.css';
 const MoreInfo = () => {
  const movieScore = useParams();
  const [movieData, setMovieData] = useState([]);
- console.log(movieData)
- console.log(movieData?.show?.network?.country);
+//  console.log(movieData)
+//  console.log(movieData?.show?.network?.country);
 
     useEffect(() => {
       fetch('https://api.tvmaze.com/search/shows?q=all')
