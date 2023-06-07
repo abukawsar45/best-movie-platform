@@ -3,6 +3,7 @@ import Main from '../layout/Main';
 import ErrorPage from '../component/ErrorPage/ErrorPage';
 import Home from '../component/Home/Home/Home';
 import MoreInfo from '../component/MoreInfo/MoreInfo';
+import BookingForm from '../component/BookingForm/BookingForm';
 
 const router = createBrowserRouter([
   {
@@ -15,9 +16,13 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/more-info',
+        path: '/more-info/:id',
         element: <MoreInfo/>
       },
+      {
+        path: '/booking/:id',
+        element: <BookingForm/>
+      }
     ],
   },
 ]);

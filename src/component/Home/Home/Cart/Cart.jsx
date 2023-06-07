@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Cart.css'
 
 const Cart = ({ movie }) => {
-  console.log(movie?.show?.status);
+  // console.log(movie?.show?.status);
   // const {image: show.image} = movie
   return (
     <div className='col-12 col-md-6 col-lg-4 flex flex-col my-2 my-md-4 my-lg-5'>
@@ -19,7 +19,7 @@ const Cart = ({ movie }) => {
           <div className='d-flex flex-column flex-md-row justify-content-md-between'>
             <div>
               <p className='text-info fs-6'>Status: {movie?.show?.status}</p>
-              <p className='text-info fs-6'>Release: {movie?.show?.ended}</p>
+              <p className='text-info fs-6'>Release: {movie?.show?.ended? movie?.show?.ended: 'not available' }</p>
             </div>
             <div>
               <p className='text-success fs-6'>
@@ -31,7 +31,10 @@ const Cart = ({ movie }) => {
             </div>
           </div>
           <div className=''>
-            <Link to='/more-info' className='btn btn-primary w-100'>
+            <Link
+              to={`/more-info/${movie?.score}`}
+              className='btn btn-primary w-100'
+            >
               More
             </Link>
           </div>
